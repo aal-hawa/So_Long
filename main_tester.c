@@ -1,4 +1,4 @@
-#include "minilibx_opengl_20191021/mlx.h"
+#include "mlx/mlx.h"
 
 
 int	main()
@@ -18,8 +18,10 @@ int	main()
 
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 1800, 1920, "How Are You");
-	mlx_pixel_put(mlx_ptr, win_ptr, 1800, 1920, 0xFFFFFF),
-	img_ptr = mlx_new_image(mlx_ptr, 50, 50);
+	int ak = 200;
+	while (ak < 1000)
+		mlx_pixel_put(mlx_ptr, win_ptr, ak++, 200, 0xFFFFFF);
+	img_ptr = mlx_new_image(mlx_ptr, 200, 200);
 	data_addr = mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, x, y);
 	mlx_get_color_value(mlx_ptr, 0x0000FF);
