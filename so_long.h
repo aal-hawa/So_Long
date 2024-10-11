@@ -6,25 +6,27 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:17:20 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/10 20:32:46 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:16:09 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#ifdef __APPLE__
-    #include "mlx_mac/mlx.h"  // For macOS
-#else
-    #include "mlx_linux/mlx.h"  // For Linux
-#endif
-
+// #ifdef __APPLE__
+//     #include "mlx_mac/mlx.h"  // For macOS
+// #else
+//     #include "mlx_linux/mlx.h"  // For Linux
+// #endif
+ #include "mlx_mac/mlx.h"  // For macOS
+ 
 #include <unistd.h>
 #include <stdlib.h>
 # include <errno.h>
 # include <fcntl.h>
 #include <stdio.h>
 
+// #include "mlx_mac/mlx_int.h"
 
 typedef struct s_info
 {
@@ -49,7 +51,16 @@ typedef struct s_info
 	int endian;
 	int x;
 	int y;
-    
+    int	x_player;
+	int	y_player;
+	void	*img_player;
+	// int	x_exit;
+	// int	y_exit;
+	char map[100][100];
+	int collc_addr[100][100];
+	void *collcs[100];
+	int	last_collc;
+	
 	int		i_fds;
 	int		i_childs;
 	int		i_wait;
@@ -73,6 +84,8 @@ typedef struct s_info
 void	exitmassege();
 void	map_pars_main(t_info *info);
 int	keys_hook(int key_code, t_info *info);
+void	ft_strcpy(char *dst, const char *src);
+void	put_imgs_to_wind(t_info *info);
 
 size_t		ft_strlen(const char *s);
 char		**ft_split(char const *s, char c, t_info *info);

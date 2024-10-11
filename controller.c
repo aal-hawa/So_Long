@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:55 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/10 20:32:03 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:26:01 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,65 @@ enum
 	
 };
 
+void	is_win(int y, int x, t_info *info)
+{
+	if (info->map[y][x] == 'E' && info->count_collectible == 0)
+	{
+		printf("YOU WON!!");
+		close_win(info);
+	}
+}
 
+void	check_move_player(int y, int x, t_info *info)
+{
+	if (info->map[y][x] == '1')
+		return ;
+	if (info->map[y][x] == 'E' && info->count_collectible != 0)
+		return ;
+	if (info->map[y][x] == 'C')
+	{
+		info->count_collectible--;
+		mlx_destroy_image(info->mlx_ptr, info->collcs[info->collc_addr[y][x]]);
+	}
+	mlx_destroy_image(info->mlx_ptr, info->img_player);
+	info->img_player = NULL;
+	info->img_player = mlx_xpm_file_to_image(info->mlx_ptr, "player.xpm", info->size_img, info->size_img);
+	info->y_player = y;
+	info->x_player = x;
+	is_win(info->y_player, info->x_player, info);
+}
 
 void	move_up(t_info *info)
 {
-	
+	if (info->y_player == 0)
+		return ;
+	check_move_player(info->y_player - 1, info->x_player, info);
 }
+
 void	move_down(t_info *info)
 {
-	
+	if (info->y_player >= info->y_length_line_map)
+		return ;
+	check_move_player(info->y_player + 1, info->x_player, info);
 }
 
 void	move_right(t_info *info)
 {
-	
+	if (info->x_player >= info->x_length_line_map)
+		return ;
+	check_move_player(info->y_player, info->x_player + 1, info);
 }
 void	move_left(t_info *info)
 {
-	
+	if (info->x_player == 0)
+		return ;
+	check_move_player(info->y_player, info->x_player -1, info);
 }
 
 void	close_win(t_info *info)
 {
 	mlx_destroy_window(info->mlx_ptr, info->win_ptr);
-	
+	exit(0);
 }
 int	keys_hook(int key_code, t_info *info)
 {
@@ -61,6 +96,7 @@ int	keys_hook(int key_code, t_info *info)
 		move_left(info);
 	else if (key_code == ON_EXIT_PRESS)
 		close_win(info);
+	
 	return (0);
 }
 

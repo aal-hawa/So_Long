@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/10 16:32:27 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:50:25 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,4 +142,20 @@ void	ft_putstr_fd(char *s, int fd, int is_malloc)
 		write(fd, "\n", 1);
 	if (is_malloc == 1 || is_malloc == 2)
 		free_char(s);
+}
+
+void	ft_strcpy(char *dst, const char *src)
+{
+	size_t	i;
+
+	i = 0;
+	if (src)
+	{
+		while (src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
 }

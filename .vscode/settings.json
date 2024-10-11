@@ -2,6 +2,11 @@
 	"files.associations": {
 		"mlx.h": "c",
 		"mlx_int.h": "c",
-		"bit": "c"
+		"bit": "c",
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"utility": "c",
+		"stdio.h": "c"
 	}
 }

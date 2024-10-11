@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:16:56 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/10 17:39:37 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:09:44 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	map_pars_main(t_info *info)
 {
 	char *test_line_map;
 	int	fd;
-	
+
 	fd = open("map.ber", O_RDONLY);
 	if (fd == -1)
 		exitmassege();
@@ -86,13 +86,13 @@ void	map_pars_main(t_info *info)
 		if (!test_line_map)
 			break;
 
-			
+		
+		ft_strcpy(info->map[info->y_length_line_map], test_line_map);
 		info->y_length_line_map++;
 		if (info->x_length_line_map == -1)
 			info->x_length_line_map = ft_strlen(test_line_map);
 		data_map(test_line_map, info);
 		surrounded_map(test_line_map, info);
-
 		
 		test_line_map = free_char(test_line_map);
 		test_line_map = NULL;
