@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:48 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 19:43:51 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 21:13:22 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main()
 	info.mlx_ptr = mlx_init();
 	ft_putstr_fd("3\n", 1, 0);
 
-	mlx_get_color_value(info.mlx_ptr, 0x0000FF);
+	mlx_get_color_value(info.mlx_ptr, 0x00FF00);
 	ft_putstr_fd("4\n", 1, 0);
 
 	// info.data_addr = mlx_get_data_addr(info.img_ptr, &info.bits_per_pixel, &info.size_line, &info.endian);
