@@ -36,7 +36,7 @@ clean:
 clean_mlx:
 	make clean -C $(MLX_DIR)
 
-fclean: clean 
+fclean: clean clean_mlx
 	rm -f $(NAME)
 
 re: fclean all

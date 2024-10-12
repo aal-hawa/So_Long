@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:17:20 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 12:44:40 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:53:30 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	keys_hook(int key_code, t_info *info);
 void	ft_strcpy(char *dst, const char *src);
 void	put_imgs_to_wind(t_info *info);
 
-size_t		ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 char		**ft_split(char const *s, char c, t_info *info);
 int			open_file_w(char *name_file);
 int			my_pipe(char **str, t_info *info);

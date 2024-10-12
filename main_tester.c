@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:48 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 13:05:30 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:43:51 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_info(t_info *info)
 	info->count_collectible = 0;
 	info->is_arround_wall = 0;
 	info->x_length_line_map = -1;
-	info->y_length_line_map = -1;
+	info->y_length_line_map = 0;
 	info->is_first_muddle_last = 0;
 	info->x_win = 0;
 	info->y_win = 0;
@@ -45,7 +45,7 @@ int	main()
 	mlx_get_color_value(info.mlx_ptr, 0x0000FF);
 	ft_putstr_fd("4\n", 1, 0);
 
-	info.data_addr = mlx_get_data_addr(info.img_ptr, &info.bits_per_pixel, &info.size_line, &info.endian);
+	// info.data_addr = mlx_get_data_addr(info.img_ptr, &info.bits_per_pixel, &info.size_line, &info.endian);
 	ft_putstr_fd("5\n", 1, 0);
 
 	info.win_ptr = mlx_new_window(info.mlx_ptr,  info.size_img * info.x_length_line_map,  info.size_img *  info.y_length_line_map, "How Are You");

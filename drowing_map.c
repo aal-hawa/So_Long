@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:58:05 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/11 19:24:36 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:53:09 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,33 @@ void	put_imgs_to_wind(t_info *info)
 	int	is_save_data;
 	
 	y = 0;
+		ft_putstr_fd("aaaaaaa1120\n", 1, 0);
+
 	while (y < info->y_length_line_map)
 	{
+		
 		x = 0;
 		info->x = 0;
+		ft_putstr_fd("aaaaaaa1121\n", 1, 0);
+
 		while (x < info->x_length_line_map)
 		{
 			is_save_data = cpy_name_inmg(info->map[y][x], name_img, info);
-			info->img_ptr = mlx_xpm_file_to_image(info->mlx_ptr, name_img, info->size_img, info->size_img);
+			ft_putstr_fd("aaaaaaa11220000\n", 1, 0);	
+
+			info->img_ptr = mlx_xpm_file_to_image(info->mlx_ptr, name_img, &info->size_img, &info->size_img);
 			is_save_pos_data(y, x, is_save_data, info);
+			printf(" x: %d\n", x);
+			printf(" info->x: %d\n",  info->x);
+			printf(" y: %d\n", y);
+			printf(" info->y: %d\n",   info->y);
 			mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img_ptr, info->x, info->y);
+			ft_putstr_fd("aaaaaaa1122\n", 1, 0);	
 			info->x += info->size_img;
 			x++;	
 		}
+		ft_putstr_fd("aaaaaaa1123\n", 1, 0);	
+
 		info->y += info->size_img;
 		y++;
 	}

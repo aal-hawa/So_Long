@@ -6,15 +6,15 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 13:11:17 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:53:19 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])

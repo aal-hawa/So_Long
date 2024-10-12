@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:55 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 13:00:13 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 20:52:51 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 // change the value to be correct
 enum 
 {
-	ON_W_PRESS = 1,
-	ON_A_PRESS = 2,
-	ON_S_PRESS = 3,
-	ON_D_PRESS = 4,
-	ON_EXIT_PRESS = 5,
+	ON_W_PRESS = 13,
+	ON_A_PRESS = 0,
+	ON_S_PRESS = 1,
+	ON_D_PRESS = 2,
+	ON_EXIT_PRESS = 53,
 	
 };
 
@@ -59,6 +59,7 @@ void	check_move_player(int y, int x, t_info *info)
 
 void	move_up(t_info *info)
 {
+	printf("info->y_player: %d\n", info->y_player);
 	if (info->y_player == 0)
 		return ;
 	check_move_player(info->y_player - 1, info->x_player, info);
@@ -66,6 +67,9 @@ void	move_up(t_info *info)
 
 void	move_down(t_info *info)
 {
+	printf("info->y_player: %d\n", info->y_player);
+	printf("info->y_length_line_map: %d\n", info->y_length_line_map);
+
 	if (info->y_player >= info->y_length_line_map)
 		return ;
 	check_move_player(info->y_player + 1, info->x_player, info);
@@ -73,12 +77,15 @@ void	move_down(t_info *info)
 
 void	move_right(t_info *info)
 {
+	printf("info->x_player: %d\n", info->x_player);
+	printf("info->x_length_line_map: %d\n", info->x_length_line_map);
 	if (info->x_player >= info->x_length_line_map)
 		return ;
 	check_move_player(info->y_player, info->x_player + 1, info);
 }
 void	move_left(t_info *info)
 {
+	printf("info->x_player: %d\n", info->x_player);
 	if (info->x_player == 0)
 		return ;
 	check_move_player(info->y_player, info->x_player -1, info);
@@ -87,15 +94,15 @@ void	move_left(t_info *info)
 int	keys_hook(int key_code, t_info *info)
 {
 	printf("key_code number is %d: \n", key_code);
-	if (key_code == ON_W_PRESS)
+	if (key_code == 13)
 		move_up(info);
-	else if (key_code == ON_S_PRESS)
+	else if (key_code == 1)
 		move_down(info);
-	else if (key_code == ON_D_PRESS)
+	else if (key_code == 2)
 		move_right(info);
-	else if (key_code == ON_A_PRESS)
+	else if (key_code == 0)
 		move_left(info);
-	else if (key_code == ON_EXIT_PRESS)
+	else if (key_code == 53)
 		close_win(info);
 	
 	return (0);
