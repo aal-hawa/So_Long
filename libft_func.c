@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/11 16:50:25 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:11:17 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ char	*ft_strdup_line(char *str, int eof)
 		dst[i] = str[i];
 		i++;
 	}
-	if (str[i] && str[i] == '\n')
-		dst[i++] = '\n';
+	// if (str[i] && str[i] == '\n')
+	// 	dst[i++] = '\n';
 	dst[i] = '\0';
 	return (dst);
 }

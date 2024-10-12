@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:55 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/11 19:26:01 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:00:13 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ enum
 	ON_EXIT_PRESS = 5,
 	
 };
+
+void	close_win(t_info *info)
+{
+	mlx_destroy_window(info->mlx_ptr, info->win_ptr);
+	exit(0);
+}
 
 void	is_win(int y, int x, t_info *info)
 {
@@ -45,7 +51,7 @@ void	check_move_player(int y, int x, t_info *info)
 	}
 	mlx_destroy_image(info->mlx_ptr, info->img_player);
 	info->img_player = NULL;
-	info->img_player = mlx_xpm_file_to_image(info->mlx_ptr, "player.xpm", info->size_img, info->size_img);
+	info->img_player = mlx_xpm_file_to_image(info->mlx_ptr, "player.xpm", &info->size_img, &info->size_img);
 	info->y_player = y;
 	info->x_player = x;
 	is_win(info->y_player, info->x_player, info);
@@ -78,14 +84,9 @@ void	move_left(t_info *info)
 	check_move_player(info->y_player, info->x_player -1, info);
 }
 
-void	close_win(t_info *info)
-{
-	mlx_destroy_window(info->mlx_ptr, info->win_ptr);
-	exit(0);
-}
 int	keys_hook(int key_code, t_info *info)
 {
-	printf("key_code number is : \n", key_code);
+	printf("key_code number is %d: \n", key_code);
 	if (key_code == ON_W_PRESS)
 		move_up(info);
 	else if (key_code == ON_S_PRESS)
