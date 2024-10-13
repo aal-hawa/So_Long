@@ -91,7 +91,7 @@ unsigned int	mlx_get_color_value(void *mlx_ptr, int color);
 
 
 /*
-** dealing with Events
+** dealing withwwdd Events
 */
 
 int	mlx_mouse_hook (void *win_ptr, int (*funct_ptr)(), void *param);

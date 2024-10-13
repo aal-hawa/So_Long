@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 14:53:19 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:23:07 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,4 +158,37 @@ void	ft_strcpy(char *dst, const char *src)
 		}
 		dst[i] = '\0';
 	}
+}
+
+void	recursive_nbr(int n, int fd)
+{
+	char	c;
+
+	if (n < 0)
+		return ;
+	if (n > 9)
+	{
+		recursive_nbr(n / 10, fd);
+		recursive_nbr(n % 10, fd);
+	}
+	else
+	{
+		c = n + '0';
+		write(fd, &c, 1);
+	}
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write (fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	recursive_nbr(n, fd);
 }

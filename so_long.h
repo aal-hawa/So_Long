@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:17:20 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/12 14:53:30 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:35:29 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,38 +54,36 @@ typedef struct s_info
     int	x_player;
 	int	y_player;
 	void	*img_player;
-	// int	x_exit;
-	// int	y_exit;
 	char map[100][100];
 	int collc_addr[100][100];
 	void *collcs[100];
 	int	last_collc;
-	
-	int		i_fds;
-	int		i_childs;
-	int		i_wait;
-	int		fd_file_r;
-	int		fd_file_w;
-	int		offset;
-	int		ac;
-	int		str_i;
-	char	*env;
-	char	*limiter;
-	int		i_limiter;
-	char	*path_commd;
-	char	**envp;
-	int		is_for_w;
-	int		is_bonus;
-	size_t	i_split;
-	int		env_null;
-	int		is_exit_one;
+	void *img_wall;
+	void *img_walk;
+	void *img_collc;
+	void *img_exit;
+  char  for_what_flood;
+  int   is_can_get;
+  int   is_have_error;
+  int   steps;
+  int   is_exit_as_wall;
 }			t_info;
 
-void	exitmassege();
+
+  typedef struct  s_point
+  {
+    int           x;
+    int           y;
+  }               t_point;
+  
+void	exitmassege(char *error, t_info *info);
 void	map_pars_main(t_info *info);
 int	keys_hook(int key_code, t_info *info);
 void	ft_strcpy(char *dst, const char *src);
 void	put_imgs_to_wind(t_info *info);
+int	close_win(t_info *info);
+
+void	ft_putnbr_fd(int n, int fd);
 
 int		ft_strlen(const char *s);
 char		**ft_split(char const *s, char c, t_info *info);
