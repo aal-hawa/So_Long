@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:17:20 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/13 19:35:29 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:02:28 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 #include <stdio.h>
 
 // #include "mlx_mac/mlx_int.h"
+
+ typedef struct  s_enemy
+  {
+  	void *img_enemy;
+  }               t_enemy;
 
 typedef struct s_info
 {
@@ -67,8 +72,18 @@ typedef struct s_info
   int   is_have_error;
   int   steps;
   int   is_exit_as_wall;
+  int   is_Bonus;
+  int   x_enemy;
+  int   y_enemy;
+  int   i_enemy;
+  int   ofset;
+  int   is_plus;
+  int   is_for_bonus;
+  int   index_string;
+  t_enemy enemy[7];
 }			t_info;
 
+ 
 
   typedef struct  s_point
   {
@@ -82,26 +97,13 @@ int	keys_hook(int key_code, t_info *info);
 void	ft_strcpy(char *dst, const char *src);
 void	put_imgs_to_wind(t_info *info);
 int	close_win(t_info *info);
+int	animited_enemy(t_info *info);
 
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(int n, int fd, t_info *info);
 
 int		ft_strlen(const char *s);
-char		**ft_split(char const *s, char c, t_info *info);
-int			open_file_w(char *name_file);
-int			my_pipe(char **str, t_info *info);
 int			ft_strncmp(const char *str1, const char *str2, size_t n);
-int			open_file_w_b(char *name_file);
-void		env_data(char **envp, char **env);
-int			init_files(char **str, t_info *info);
-void		error_pipe(int **fd1, int i, t_info *info, char **strs);
 void		ft_putstr_fd(char *s, int fd, int is_malloc);
-int			finish_parent(int ***fd, pid_t **frs, t_info *info);
-void		de_allocate(int ***fd, pid_t **frs, int i);
-void		free_split(char **dst, size_t i);
-char		*ft_strdup(const char *str);
-void		get_path_command(char **strs, t_info *info);
-void		allocate_fds(int ***fd, pid_t **frs, int j);
-
 
 char	*get_next_line(int fd, t_info *info);
 size_t	ft_strlen_line(const char *s);

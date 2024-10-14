@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:48 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/13 19:35:41 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:55:07 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	init_info(t_info *info)
 	info->is_have_error = 0;
 	info->steps = 0;
 	info->is_exit_as_wall = 0;
+	info->is_Bonus = 1;
+	info->i_enemy = 0;
+	info->ofset = 0;
+	info->is_for_bonus = 0;
+
 }
 
 int	main()
@@ -43,6 +48,10 @@ int	main()
 	put_imgs_to_wind(&info);
 	mlx_key_hook(info.win_ptr, keys_hook, &info);
 	mlx_hook(info.win_ptr, 17, 0, close_win, &info);
+	if(info.is_Bonus == 1)
+	{
+		// mlx_loop_hook(info.img_ptr, animited_enemy, &info);
+	}
 	mlx_loop(info.mlx_ptr);
 
 }

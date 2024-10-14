@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/13 19:23:07 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:08:53 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	ft_putstr_fd(char *s, int fd, int is_malloc)
 		write(fd, &s[i], 1);
 		i++;
 	}
-	if (is_malloc == 2 || is_malloc -1)
+	if (is_malloc == 2 || is_malloc == -1)
 		write(fd, "\n", 1);
 	if (is_malloc == 1 || is_malloc == 2)
 		free_char(s);
@@ -160,26 +160,34 @@ void	ft_strcpy(char *dst, const char *src)
 	}
 }
 
-void	recursive_nbr(int n, int fd)
+void	recursive_nbr(int n, int fd, t_info *info)
 {
 	char	c;
-
+	
 	if (n < 0)
 		return ;
 	if (n > 9)
 	{
-		recursive_nbr(n / 10, fd);
-		recursive_nbr(n % 10, fd);
+		recursive_nbr(n / 10, fd, info);
+		recursive_nbr(n % 10, fd, info);
 	}
 	else
 	{
 		c = n + '0';
-		write(fd, &c, 1);
+			write(fd, &c, 1);
+		// if (info->is_for_bonus == 0)
+		// else
+		// {
+		// 	// string[info->index_string] = c;
+		// 	// info->index_string++;
+		// }
 	}
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd, t_info *info)
 {
+	char string[25];
+	info->index_string = 0;
 	if (n == -2147483648)
 	{
 		write (fd, "-2147483648", 11);
@@ -190,5 +198,10 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, "-", 1);
 		n = -n;
 	}
-	recursive_nbr(n, fd);
+	recursive_nbr(n, fd, info);
+	// string[info->index_string] = 0;
+	
+	// if (info->is_for_bonus == 1)
+	// 	mlx_string_put(info->mlx_ptr, info->win_ptr,80,
+	// 		15, 0x00ffff, string);
 }

@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:16:56 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/13 20:06:29 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:59:42 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	data_map(char *test_line_map, t_info *info)
 		return ;
 	while(*test_line_map)
 	{
-		if (!(*test_line_map == '0' || *test_line_map == '1' || *test_line_map == 'C' || *test_line_map == 'E' || *test_line_map == 'P'))
+		if (!(*test_line_map == '0' || *test_line_map == '1' || *test_line_map == 'C' || *test_line_map == 'E' || *test_line_map == 'P' || (*test_line_map == 'e' && info->is_Bonus == 1)))
 			exitmassege("Invalid Input\n", info);
 		if ( *test_line_map == 'E')
 		{
@@ -111,20 +111,14 @@ void	can_get_it(t_info *info, char to_flood)
 		i++;
 	}
 	j = 0;
-	printf("string 1 :   %s\n", info->map[0]);
-	printf("info->y_length_line_map: %d    info->x_length_line_map: %d\n", info->y_length_line_map, info->x_length_line_map);
 	while (j < info->y_length_line_map)
 	{
 		i = 0;
 		while (i < info->x_length_line_map)
 		{
 			map[j][i] = info->map[j][i];
-			printf("[%d][%d] %c ",i, j, info->map[j][i]);
-			// printf("[%d][%d] %c ",i, j, info->map[i][j]);
-
 			i++;
 		}
-		printf("\n");
 		j++;
 	}
 	flood_fill(map, (t_point){info->x_length_line_map, info->y_length_line_map}, 
@@ -135,7 +129,6 @@ void	can_get_it(t_info *info, char to_flood)
 		i = 0;
 		while (i < info->x_length_line_map)
 		{
-			// printf("[%d][%d] %c ",i, j, map[i][j]);
 			if ((map[j][i] == 'E' && to_flood == 't' ) || map[j][i] == 'C')
 				exitmassege("Invalid Map\n", info);
 			if (info->is_have_error == 1)
@@ -143,7 +136,6 @@ void	can_get_it(t_info *info, char to_flood)
 			i++;
 		}
 		j++;
-		printf("\n");
 	}
 	i = 0;
 	while (i < 100)
