@@ -1,7 +1,7 @@
 NAME = so_long
 NAME_BONUS = so_long_bonus
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 UNAME:= $(shell uname)
 
@@ -28,10 +28,12 @@ $(NAME): $(OBJS) $(OBJS_MANDATORY) $(MLX)
 
 $(NAME_BONUS): $(OBJS) $(OBJS_BONUS) $(MLX)
 		$(CC) $(MLX_FLAGS) $(OBJS) $(OBJS_BONUS) -o $(OBJS_BONUS)
-# $(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJS) -o $(NAME)
 
-# %.o: %.c 
-# 	$(CC) $(CFLAGS)  -c $< -o $@
+$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJS) -o $(NAME)
+
+%.o: %.c 
+	$(CC) $(CFLAGS)  -c $< -o $@
+	
 bonus: $(NAME_BONUS)
 
 clean:
