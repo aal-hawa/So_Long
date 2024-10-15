@@ -10,6 +10,8 @@
 		"stdio.h": "c",
 		"ostream": "c",
 		"string": "c",
-		"iosfwd": "c"
+		"iosfwd": "c",
+		"main_bonus": "c",
+		"map_parsing_utils": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/14 18:08:53 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:43:49 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ char	*ft_strdup_line(char *str, int eof)
 		dst[i] = str[i];
 		i++;
 	}
-	// if (str[i] && str[i] == '\n')
-	// 	dst[i++] = '\n';
 	dst[i] = '\0';
 	return (dst);
 }
@@ -158,50 +156,4 @@ void	ft_strcpy(char *dst, const char *src)
 		}
 		dst[i] = '\0';
 	}
-}
-
-void	recursive_nbr(int n, int fd, t_info *info)
-{
-	char	c;
-	
-	if (n < 0)
-		return ;
-	if (n > 9)
-	{
-		recursive_nbr(n / 10, fd, info);
-		recursive_nbr(n % 10, fd, info);
-	}
-	else
-	{
-		c = n + '0';
-			write(fd, &c, 1);
-		// if (info->is_for_bonus == 0)
-		// else
-		// {
-		// 	// string[info->index_string] = c;
-		// 	// info->index_string++;
-		// }
-	}
-}
-
-void	ft_putnbr_fd(int n, int fd, t_info *info)
-{
-	char string[25];
-	info->index_string = 0;
-	if (n == -2147483648)
-	{
-		write (fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n = -n;
-	}
-	recursive_nbr(n, fd, info);
-	// string[info->index_string] = 0;
-	
-	// if (info->is_for_bonus == 1)
-	// 	mlx_string_put(info->mlx_ptr, info->win_ptr,80,
-	// 		15, 0x00ffff, string);
 }
