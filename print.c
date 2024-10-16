@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_nump.c                                       :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:26:16 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/15 18:43:05 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:54:11 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,25 @@ void	ft_putnbr_fd(int n, int fd)
 		n = -n;
 	}
 	recursive_nbr(n, fd);
+}
+void	print_steps(t_info *info)
+{
+	char	str[12];
+
+	if (info->is_bonus == 1)
+	{
+		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, 0, 0);
+		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, info->sz, info->sz);
+		mlx_string_put(info->mlx, info->win, 10,
+			15, 0x00ffff, "step: ");
+		ft_putnbr_fd(info->steps, 1);
+		mlx_string_put(info->mlx, info->win, 80,
+			15, 0x00ffff, ft_itoa_without_mlc(info->steps, str));
+	}
+	else
+	{
+		ft_putstr_fd("step: ", 1, 0);
+		ft_putnbr_fd(info->steps, 1);
+		write(1, "\n", 1);
+	}
 }

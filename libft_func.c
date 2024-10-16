@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/15 18:43:49 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:45:06 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,7 @@ char	*ft_strdup_after_line(char *str)
 	return (dst);
 }
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
-{
-	while (n > 0)
-	{
-		if ((unsigned char)*str1 != (unsigned char)*str2)
-			return ((unsigned char)*str1 - (unsigned char)*str2);
-		if (!(unsigned char)*str1)
-			return (0);
-		str1++;
-		str2++;
-		n--;
-	}
-	return (0);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, int is_malloc)
 {
 	size_t	len;
 	char	*dst;
@@ -120,40 +105,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[i])
 		dst[j++] = s2[i++];
 	dst[j] = '\0';
-	free_char(s1);
+	if (is_malloc == 1)
+		free_char(s1);
 	return (dst);
-}
-
-void	ft_putstr_fd(char *s, int fd, int is_malloc)
-{
-	int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-	if (is_malloc == 2 || is_malloc == -1)
-		write(fd, "\n", 1);
-	if (is_malloc == 1 || is_malloc == 2)
-		free_char(s);
-}
-
-void	ft_strcpy(char *dst, const char *src)
-{
-	size_t	i;
-
-	i = 0;
-	if (src)
-	{
-		while (src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
 }

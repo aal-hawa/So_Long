@@ -1,16 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 19:08:49 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/15 19:34:32 by aal-hawa         ###   ########.fr       */
+/*   Created: 2024/10/16 16:39:44 by aal-hawa          #+#    #+#             */
+/*   Updated: 2024/10/16 17:54:36 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_putstr_fd(char *s, int fd, int is_malloc)
+{
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	if (is_malloc == 2 || is_malloc == -1)
+		write(fd, "\n", 1);
+	if (is_malloc == 1 || is_malloc == 2)
+		free_char(s);
+}
+
+void	init_info(t_info *info)
+{
+	info->is_hv_plr = 0;
+	info->is_hv_ext = 0;
+	info->cnt_collc = 0;
+	info->is_arnd_wall = 0;
+	info->x_lngth_mp = -1;
+	info->y_lngth_mp = 0;
+	info->is_f_m_l = 0;
+	info->sz = 50;
+	info->is_hv_err = 0;
+	info->steps = 0;
+	info->is_bonus = 0;
+	info->i_enemy = 0;
+	info->ofset = 0;
+}
 
 void flood(char **tab, t_point size, t_point cur, char to_flood)
 {
@@ -30,4 +65,19 @@ void flood(char **tab, t_point size, t_point cur, char to_flood)
 void  flood_fill(char **tab, t_point size, t_point begin, char to_flood)
 {
 	flood(tab, size, begin, to_flood);
+}
+int	open_map_fd(char * name_map, t_info *info)
+{
+	int	fd;
+	char	join_map;
+	
+	join_map = ft_strjoin("maps/", name_map, 0);
+	fd = open(join_map, O_RDONLY);
+	free_char(join_map);
+	if (fd == -1)
+	{
+		exitmassege("Error File Open\n", info);
+		exit (1);
+	}
+	return (fd);
 }

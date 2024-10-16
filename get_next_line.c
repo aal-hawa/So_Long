@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:29:02 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/15 18:42:30 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:48:28 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*els_whl_nxt(char **text_buffer, char *returntext, ssize_t bytesreed, t_inf
 		*text_buffer = ft_strdup_after_line(*text_buffer);
 		if (!*text_buffer[0])
 			*text_buffer = free_char(*text_buffer);
-		info->is_first_muddle_last++;
+		info->is_f_m_l++;
 	}
 	else
 	{
@@ -54,7 +54,7 @@ char	*while_next_line(char **text_buffer, int fd, ssize_t bytesreed, t_info *inf
 		if (bytesreed > 0)
 		{
 			returntext[bytesreed] = '\0';
-			*text_buffer = ft_strjoin(*text_buffer, returntext);
+			*text_buffer = ft_strjoin(*text_buffer, returntext, 1);
 			returntext = free_char(returntext);
 			returntext = ft_strdup_line(*text_buffer, 1);
 			if (returntext)

@@ -12,8 +12,8 @@ SRC_BONUS = main_bonus.c
 
 MLX = $(MLX_DIR)/libmlx.a
 SRC = map_parsing.c controller.c drowing_map.c \
-	libft_func.c get_next_line.c  print_nump.c drowing_map_utils.c \
-	flood_fill.c map_parsing_utils.c print_str.c
+	libft_func.c get_next_line.c  print.c drowing_map_utils.c \
+	map_parsing_utils.c 
 
 OBJS = $(SRC:.c=.o)
 OBJS_MANDATORY = $(SRC_MANDATORY:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:55 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/15 18:38:50 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:54:25 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,26 @@ void	free_bonus_mlc(t_info *info)
 }
 int	close_win(t_info *info)
 {
-	if (info->img_wall)
-		free(info->img_wall);
-	if (info->img_walk)
-		free(info->img_walk);
-	if (info->img_player)
-		free(info->img_player);
+	if (info->img_wl)
+		free(info->img_wl);
+	if (info->img_wlk)
+		free(info->img_wlk);
+	if (info->img_plr)
+		free(info->img_plr);
 	if (info->img_collc)
 		free(info->img_collc);
-	if (info->img_exit)
-		free(info->img_exit);
-	if (info->is_Bonus == 1)
+	if (info->img_ext)
+		free(info->img_ext);
+	if (info->is_bonus == 1)
 		free_bonus_mlc(info);
-	mlx_destroy_window(info->mlx_ptr, info->win_ptr);
+	mlx_destroy_window(info->mlx, info->win);
 	exit(0);
 	return (0);
 }
 
 void	is_win(int y, int x, t_info *info)
 {
-	if (info->map[y][x] == 'E' && info->count_collectible == 0)
+	if (info->map[y][x] == 'E' && info->cnt_collc == 0)
 	{
 		ft_putstr_fd("YOU WON!!\n", 1, 0);
 		close_win(info);
