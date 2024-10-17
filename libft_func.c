@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:08:25 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:45:06 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:15:51 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*ft_strdup_after_line(char *str)
 	return (dst);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int is_malloc)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	len;
 	char	*dst;
@@ -105,7 +105,6 @@ char	*ft_strjoin(char *s1, char *s2, int is_malloc)
 	while (s2[i])
 		dst[j++] = s2[i++];
 	dst[j] = '\0';
-	if (is_malloc == 1)
-		free_char(s1);
+	free_char(s1);
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:17:20 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/17 16:05:51 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:15:23 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	can_get_it(t_info *info, char to_flood);
 char	*get_next_line(int fd, t_info *info);
 char	*ft_strdup_line(char *str, int eof);
 char	*ft_strdup_after_line(char *str);
-char	*ft_strjoin(char *s1, char *s2, int is_malloc);
+char	*ft_strjoin(char *s1, char *s2);
 char	*free_char(char *this_string);
 int	open_map_fd(char * name_map, t_info *info);
 void	move_up(t_info *info);
