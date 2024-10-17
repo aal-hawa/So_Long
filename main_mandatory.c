@@ -6,13 +6,13 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:48 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:52:37 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:14:42 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char *arg)
+int	main(int ac, char **arg)
 {
 	t_info info;
 	int	fd;

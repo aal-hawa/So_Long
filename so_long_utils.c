@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:39:44 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:54:36 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:04:11 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,24 @@ void  flood_fill(char **tab, t_point size, t_point begin, char to_flood)
 int	open_map_fd(char * name_map, t_info *info)
 {
 	int	fd;
-	char	join_map;
-	
-	join_map = ft_strjoin("maps/", name_map, 0);
-	fd = open(join_map, O_RDONLY);
-	free_char(join_map);
+	char	*comp;
+	int	i;
+	int	ln;
+	i = 4;
+	comp = ".ber";
+	ln = ft_strlen(name_map);
+	while (name_map[ln - i])
+	{
+		if (comp[4 - i] != name_map[ln - i])
+			break ;
+		i--;
+	}
+	if (i != 0 || name_map[ln - i])
+	{
+		exitmassege("Error ending map file extension (.ber)\n", info);
+		exit (1);
+	}
+	fd = open(name_map, O_RDONLY);
 	if (fd == -1)
 	{
 		exitmassege("Error File Open\n", info);

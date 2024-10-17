@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:55 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:54:25 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:04:53 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	free_bonus_mlc(t_info *info)
 	int	i;
 	t_enemes *enemes;
 	t_enemes *del_enemes;
-	
+
+	i = 0;
 	while (info->m[i].m)
 	{
 		free(info->m[i].m);
@@ -26,11 +27,12 @@ void	free_bonus_mlc(t_info *info)
 			break ;
 	}
 	enemes = info->enemes;
-	while (enemes)
+	while (enemes->next)
 	{
 		del_enemes = enemes;
 		enemes = enemes->next;
 		free(del_enemes);
+		del_enemes = NULL;
 	}
 }
 int	close_win(t_info *info)

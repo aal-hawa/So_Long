@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:58:05 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:54:36 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:06:24 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_imgs(t_info *info)
 	if (info->img_wlk == NULL)
 		exitmassege("Something Happend Wrong With walk.xpm\n", info);
 	info->img_plr = mlx_xpm_file_to_image(info->mlx,
-		"player.xpm", &s, &s);
+		"xpms/player.xpm", &s, &s);
 	if (info->img_plr == NULL)
 		exitmassege("Something Happend Wrong With player.xpm\n", info);
 	info->img_ext = mlx_xpm_file_to_image(info->mlx, "xpms/exit.xpm", &s, &s);
@@ -100,7 +100,7 @@ void	put_imgs_to_wind(t_info *info)
 {
 	int	y;
 	int	x;
-	char name_img[100];
+	// char name_img[100];
 	
 	y = 0;
 	init_imgs(info);

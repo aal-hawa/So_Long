@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:23:51 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:52:37 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:04:01 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	put_imgs_enemy(t_info *info)
 	info->i_enemy = 0;
 	info->ofset = 0;
 	info->is_plus = 1;
-	if (!info->enemes)
+	if (!info->enemes->next)
 		return ;
 	mlx_loop_hook(info->mlx, animited_enemy, &(*info));
 
 }
 
-int	main(int ac, char *arg)
+int	main(int ac, char **arg)
 {
 	t_info info;
 	int	fd;
@@ -35,6 +35,7 @@ int	main(int ac, char *arg)
 		exit (1);
 	}
 	info.is_bonus = 1;
+	info.enemes->next = NULL;
 	fd = open_map_fd(arg[1], &info);
 	map_pars_main(fd, &info);
 	info.mlx = mlx_init();

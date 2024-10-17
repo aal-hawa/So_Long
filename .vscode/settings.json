@@ -12,6 +12,8 @@
 		"string": "c",
 		"iosfwd": "c",
 		"main_bonus": "c",
-		"map_parsing_utils": "c"
+		"map_parsing_utils": "c",
+		"__locale": "c",
+		"ios": "c"
 	}
 }

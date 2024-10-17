@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing_utils                                  :+:      :+:    :+:   */
+/*   map_parsing_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 19:07:17 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:54:36 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:58:12 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	after_can_get_it(t_info *info, char to_flood, char **map)
 void	can_get_it(t_info *info, char to_flood)
 {
 	char **map;
-	int	is_get;
+	// int	is_get;
 	int i;
 	int j;
 	

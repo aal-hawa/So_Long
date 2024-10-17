@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:17:20 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:54:36 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:05:51 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include "mlx_mac/mlx.h"
 #include <unistd.h>
 #include <stdlib.h>
-# include <errno.h>
+// # include <errno.h>
 # include <fcntl.h>
-#include <stdio.h>
+// #include <stdio.h>
 
  typedef struct  s_enemy
   {
@@ -29,7 +29,7 @@
   {
     int x;
     int y;
-    t_enemes *next;
+    struct s_enemes *next;
   }               t_enemes;
 
 typedef struct s_info
@@ -88,4 +88,12 @@ char	*ft_strdup_after_line(char *str);
 char	*ft_strjoin(char *s1, char *s2, int is_malloc);
 char	*free_char(char *this_string);
 int	open_map_fd(char * name_map, t_info *info);
+void	move_up(t_info *info);
+void	move_down(t_info *info);
+void	move_right(t_info *info);
+void	move_left(t_info *info);
+void	init_info(t_info *info);
+void	is_win(int y, int x, t_info *info);
+void	is_lose(int y, int x, t_info *info);
+
 #endif
