@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:58:05 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/17 13:06:24 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:46:05 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ void	set_enemy_pos(int x, int y, t_info *info)
 	t_enemes *enemy;
 	
 	enemy = malloc(sizeof(t_enemes));
+	if (!enemy)
+	{
+		exitmassege("error enemy malloc\n", info);
+		return ;
+	}
 	enemy->x = x;
 	enemy->y = y;
 	enemy->next = info->enemes;

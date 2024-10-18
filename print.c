@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:26:16 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/17 14:34:41 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:35:50 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	print_steps(t_info *info)
 		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, 2 * info->sz, 0);
 		mlx_string_put(info->mlx, info->win, 10,
 			15, 0x00ffff, "step: ");
-		// ft_putnbr_fd(info->steps, 1);
 		mlx_string_put(info->mlx, info->win, 80,
 			15, 0x00ffff, ft_itoa_without_mlc(info->steps, str));
 	}

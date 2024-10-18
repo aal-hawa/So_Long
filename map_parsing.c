@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:16:56 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/16 17:54:36 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:26:11 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void surrounded_map(char *test_line_map, t_info *info)
 	int	i;
 
 	i = 0;
+	if (info->is_hv_err == 1)
+		return ;
 	if (info->is_f_m_l == 0 || info->is_f_m_l == 2)
 	{
 		while (test_line_map[i])
@@ -47,9 +49,12 @@ void surrounded_map(char *test_line_map, t_info *info)
 void	after_get_lines(int fd, t_info *info)
 {
 	check_after_parse(info);
-	can_get_it(info, 't');
-	can_get_it(info, 's');
-	can_get_it(info, 'z');
+	if (info->is_hv_err != 1)
+	{
+		can_get_it(info, 't');
+		can_get_it(info, 's');
+		can_get_it(info, 'z');
+	}
 	close(fd);
 	if (info->is_hv_err == 1)
 		exit (1);
@@ -79,16 +84,17 @@ void	map_pars_main(int fd, t_info *info)
 		test_line_map = get_next_line(fd, info);
 		if (!test_line_map)
 			break;
-		ft_strcpy(info->map[info->y_lngth_mp], test_line_map);
-		info->y_lngth_mp++;
-		if (info->y_lngth_mp > 27)
-			exitmassege("The Length Of (y) It Must Less Or Equal 27\n", info);
-		if (info->is_hv_err == 1)
-			break ;
-		if (info->x_lngth_mp == -1)
-			info->x_lngth_mp = ft_strlen(test_line_map);
-		data_map(test_line_map, info);
-		surrounded_map(test_line_map, info);
+		if (info->is_hv_err != 1)
+		{
+			ft_strcpy(info->map[info->y_lngth_mp], test_line_map);
+			info->y_lngth_mp++;
+			if (info->y_lngth_mp > 27)
+				exitmassege("The Length Of (y) It Must Less Or Equal 27\n", info);
+			if (info->x_lngth_mp == -1)
+				info->x_lngth_mp = ft_strlen(test_line_map);
+			data_map(test_line_map, info);
+			surrounded_map(test_line_map, info);
+		}
 		test_line_map = free_char(test_line_map);
 		test_line_map = NULL;
 	}
