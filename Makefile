@@ -32,13 +32,14 @@ $(NAME_BONUS): $(OBJS) $(OBJS_BONUS) $(MLX)
 
 bonus: $(NAME_BONUS) 
 
-clean:
-	rm -f $(OBJS) $(OBJS_MANDATORY) $(OBJS_BONUS)
-
 clean_mlx:
 	make clean -C $(MLX_DIR)
 
-fclean: clean clean_mlx
+clean: clean_mlx
+	rm -f $(OBJS) $(OBJS_MANDATORY) $(OBJS_BONUS)
+
+
+fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all

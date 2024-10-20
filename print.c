@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:26:16 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/18 17:35:50 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/20 13:55:45 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,10 @@ char	*ft_itoa_without_mlc(int n, char *str)
 	return (str);
 }
 
-
 void	recursive_nbr(int n, int fd)
 {
 	char	c;
-	
+
 	if (n < 0)
 		return ;
 	if (n > 9)
@@ -78,7 +77,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
-		write (fd, "-2147483648", 11);
+		write(fd, "-2147483648", 11);
 		return ;
 	}
 	if (n < 0)
@@ -88,6 +87,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	recursive_nbr(n, fd);
 }
+
 void	print_steps(t_info *info)
 {
 	char	str[12];
@@ -95,15 +95,18 @@ void	print_steps(t_info *info)
 	if (info->is_bonus == 1)
 	{
 		mlx_put_image_to_window(info->mlx, info->win, info->img_wlk, 0, 0);
-		mlx_put_image_to_window(info->mlx, info->win, info->img_wlk, info->sz, 0);
-		mlx_put_image_to_window(info->mlx, info->win, info->img_wlk,2 * info->sz, 0);
+		mlx_put_image_to_window(info->mlx, info->win, info->img_wlk, info->sz,
+			0);
+		mlx_put_image_to_window(info->mlx, info->win, info->img_wlk, 2
+			* info->sz, 0);
 		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, 0, 0);
-		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, info->sz, 0);
-		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, 2 * info->sz, 0);
-		mlx_string_put(info->mlx, info->win, 10,
-			15, 0x00ffff, "step: ");
-		mlx_string_put(info->mlx, info->win, 80,
-			15, 0x00ffff, ft_itoa_without_mlc(info->steps, str));
+		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, info->sz,
+			0);
+		mlx_put_image_to_window(info->mlx, info->win, info->img_wl, 2
+			* info->sz, 0);
+		mlx_string_put(info->mlx, info->win, 10, 15, 0x00ffff, "step: ");
+		mlx_string_put(info->mlx, info->win, 80, 15, 0x00ffff,
+			ft_itoa_without_mlc(info->steps, str));
 	}
 	else
 	{

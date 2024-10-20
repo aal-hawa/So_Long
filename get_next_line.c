@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:29:02 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/17 16:15:29 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:23:44 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,33 @@ char	*free_char(char *this_string)
 	return (NULL);
 }
 
-char	*els_whl_nxt(char **text_buffer, char *returntext, ssize_t bytesreed, t_info *info)
+char	*ft_strjoin(char *s1, char *s2)
+{
+	size_t	len;
+	char	*dst;
+	size_t	i;
+	size_t	j;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	i = 0;
+	j = 0;
+	if (!dst)
+		return (NULL);
+	while (s1[i])
+		dst[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		dst[j++] = s2[i++];
+	dst[j] = '\0';
+	free_char(s1);
+	return (dst);
+}
+
+char	*els_whl_nxt(char **text_buffer, char *returntext, ssize_t bytesreed,
+		t_info *info)
 {
 	if (bytesreed == 0 && *text_buffer[0])
 	{
@@ -41,7 +67,8 @@ char	*els_whl_nxt(char **text_buffer, char *returntext, ssize_t bytesreed, t_inf
 	return (returntext);
 }
 
-char	*while_next_line(char **text_buffer, int fd, ssize_t bytesreed, t_info *info)
+char	*while_next_line(char **text_buffer, int fd, ssize_t bytesreed,
+		t_info *info)
 {
 	char	*returntext;
 

@@ -6,7 +6,7 @@
 /*   By: aal-hawa <aal-hawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:22:55 by aal-hawa          #+#    #+#             */
-/*   Updated: 2024/10/17 16:04:53 by aal-hawa         ###   ########.fr       */
+/*   Updated: 2024/10/20 13:54:33 by aal-hawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	free_bonus_mlc(t_info *info)
 {
-	int	i;
-	t_enemes *enemes;
-	t_enemes *del_enemes;
+	int			i;
+	t_enemes	*enemes;
+	t_enemes	*del_enemes;
 
 	i = 0;
 	while (info->m[i].m)
@@ -35,6 +35,7 @@ void	free_bonus_mlc(t_info *info)
 		del_enemes = NULL;
 	}
 }
+
 int	close_win(t_info *info)
 {
 	if (info->img_wl)
@@ -86,5 +87,3 @@ int	keys_hook(int key_code, t_info *info)
 		close_win(info);
 	return (0);
 }
-
-
